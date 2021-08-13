@@ -1,6 +1,6 @@
 kind: pipeline
 
-name: lateautumn CI
+name: Redmi K30S CI
 
 platform:
 
@@ -26,5 +26,5 @@ steps:
 
     commands:
 
-      - apt update && apt install tmate -y
-      - tmate -F
+      - apt-get update
+      - bash build.sh
