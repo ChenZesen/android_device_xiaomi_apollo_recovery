@@ -20,8 +20,8 @@
 DEVICE_PATH := device/xiaomi/apollo
 $(call inherit-product, device/xiaomi/apollo/device.mk)
 
-# Inherit some common OrangeFox stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+# Inherit some common twrp stuff.
+$(call inherit-product, vendor/twrp/config/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Device identifier. This must come after all inclusions
