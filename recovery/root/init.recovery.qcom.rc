@@ -33,6 +33,12 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
+service vendor.qti.vibrator /vendor/bin/hw/vendor.qti.hardware.vibrator-service
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
 on property:sys.usb.config=fastboot
     start servicemanager
     start hwservicemanager
