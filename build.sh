@@ -17,7 +17,7 @@ echo "Start compiling "
 
 cd fox_10.0
 git clone https://github.com/TeamWin/android_device_qcom_twrp-common -b android-11 device/qcom/twrp-common
-git clone https://github.com/ChenZesen/android_device_xiaomi_apollo_recovery.git device/xiaomi/apollo
+cp -r /drone/src device/xiaomi/apollo
 mkdir vendor/recovery/security/
 wget https://gitlab.com/OrangeFox/vendor/recovery/-/raw/master/security/miui.x509.pem?inline=false -O vendor/recovery/security/miui.x509.pem
 source build/envsetup.sh
