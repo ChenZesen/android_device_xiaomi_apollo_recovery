@@ -14,3 +14,5 @@ ro.treble.enabled=true
 ro.boot.avb_version=1.0
 ro.boot.vbmeta.avb_version=1.0
 ro.twrp.sar=true
+
+import /vendor/build_${ro.boot.product.hardware.sku}.prop

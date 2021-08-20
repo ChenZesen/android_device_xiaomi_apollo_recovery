@@ -4,22 +4,32 @@ cd /drone/
 echo "Download the source code"
 
 wget -O - "https://github.com/Mikubill/transfer/releases/download/v0.4.11/transfer_0.4.11_linux_amd64.tar.gz" | tar -x --gzip -C /usr/bin/
-transfer https://we.tl/t-rR6yeDNa4Y?src=dnl
-tar axf orangfox.tar.zst
+#transfer https://we.tl/t-rR6yeDNa4Y?src=dnl
+#tar axf orangfox.tar.zst
 
 echo "Setting Up the Compile Environment "
 
 git clone https://gitlab.com/OrangeFox/misc/scripts
 bash scripts/setup/android_build_env.sh
 bash scripts/setup/install_android_sdk.sh
-
+bash scripts/setup/install_android_sdk.sh
 echo "Start compiling "
 
+mkdir ~/OrangeFox_10
+cd ~/OrangeFox_10
+git clone https://gitlab.com/OrangeFox/sync.git
+ 
+cd ~/OrangeFox_10/sync
+./get_fox_10.sh ~/OrangeFox_10/fox_10.0
+ 
+rm -rf ~/OrangeFox_10/fox_10.0/.repo
+mv ~/OrangeFox_10/fox_10.0 /drone/
+cd /drone
+
 cd fox_10.0
-git clone https://github.com/TeamWin/android_device_qcom_twrp-common -b android-11 device/qcom/twrp-common
+
 cp -r /drone/src device/xiaomi/apollo
-mkdir vendor/recovery/security/
-wget https://gitlab.com/OrangeFox/vendor/recovery/-/raw/master/security/miui.x509.pem?inline=false -O vendor/recovery/security/miui.x509.pem
+
 source build/envsetup.sh
 export ALLOW_MISSING_DEPENDENCIES=true
 export LC_ALL="C"
